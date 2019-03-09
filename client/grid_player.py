@@ -51,6 +51,9 @@ class GridPlayer:
                 s_path = game_map.bfs(unit.position(), closest_node)
                 if s_path:
                     moves.append(unit.move_towards(s_path[1]))
+                else:
+                    moves.append(unit.move('UP'))
+
         
         for unit in melees:
             enemy_list = unit.nearby_enemies_by_distance(enemy_units)
@@ -62,9 +65,8 @@ class GridPlayer:
                 else:
                     closest = enemy_units.units[enemy_list[0][0]]
                     moves.append(unit.move_towards((closest.x, closest.y)))
-            elif unit.can_duplicate(resources):
-                    moves.append(unit.duplicate('LEFT'))
             else:
+                moves.append(unit.move('UP'))
                 moves.append(unit.move('UP'))
         
         return moves
