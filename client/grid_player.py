@@ -65,6 +65,6 @@ class GridPlayer:
             elif unit.can_duplicate(resources):
                     moves.append(unit.duplicate('LEFT'))
             else:
-                moves.append(unit.move('DOWN'))
+                moves.append(unit.move('UP'))
         
         return moves
